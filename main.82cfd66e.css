@@ -333,7 +333,18 @@ body {
     /* color: #555; */
     color: #fff9e4;
     /* background-color: #fff */
-    background-color: #2a2349
+    /* background-color: #2a2349 */
+    background: url("assets/images/bird_tile_itch.png") repeat;
+    position: relative;
+    left: 0;
+    top: 0;
+    animation: scrolling 20s linear infinite;
+}
+
+@keyframes scrolling {
+    100% {
+        background-position: 105% 105%;
+    }
 }
 
 button,
