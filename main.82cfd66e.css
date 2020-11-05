@@ -5899,7 +5899,10 @@ main {
 .nav-footer {
     position: absolute;
     bottom: 0;
-    padding-bottom: 30px
+    /* padding: 30px; */
+    padding-bottom: 30px;
+    width: 220px;
+    /* margin-right: 10px; */
 }
 
 .nav-footer a,
@@ -5918,7 +5921,7 @@ main {
 
 .nav-footer-social-buttons {
     margin-bottom: 0;
-    margin-left: -10px
+    /* margin-left: -10px */
 }
 
 .navbar-default {
