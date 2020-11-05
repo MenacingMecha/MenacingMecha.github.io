@@ -635,12 +635,14 @@ mark {
 }
 
 .text-primary {
-    color: #ff6360
+    /* color: #ff6360; */
+    color: #8eb7d8;
 }
 
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #ff312d
+    /* color: #ff312d */
+    color: #8eb7d8
 }
 
 .text-success {
@@ -3303,7 +3305,8 @@ fieldset[disabled] .btn-danger:hover {
 }
 
 .btn-link {
-    color: #ff6360;
+    /* color: #ff6360; */
+    color: #8eb7d8;
     font-weight: 400;
     border-radius: 0
 }
@@ -3998,7 +4001,8 @@ tbody.collapse.in {
 .nav .open>a:focus,
 .nav .open>a:hover {
     background-color: transparent;
-    border-color: #ff6360
+    /* border-color: #ff6360; */
+    border-color: #8eb7d8;
 }
 
 .nav .nav-divider {
@@ -5916,7 +5920,8 @@ main {
 }
 
 .nav>li>a:hover {
-    color: #ff6360
+    /* color: #ff6360 */
+    color: #8eb7d8;
 }
 
 .nav-footer-social-buttons {
