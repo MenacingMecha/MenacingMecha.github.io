@@ -329,7 +329,9 @@ html {
 body {
     font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
     font-size: 14px;
+    /* font-size: 60px; */
     line-height: 1.78;
+    /* line-height: 2.78; */
     /* color: #555; */
     color: #fff9e4;
     /* background-color: #fff */
@@ -5802,19 +5804,21 @@ main {
     -webkit-transition: all .2s linear;
     -o-transition: all .2s linear;
     transition: all .2s linear;
-    padding: 15px;
+    /* padding: 15px; */
+    /* padding: 55px; */
     height: 100%
 }
 
 @media (min-width:768px) {
     main {
-        margin-left: 240px
+        /* margin-left: 240px */
+        margin-left: 280px
     }
 }
 
 @media (min-width:992px) {
     main {
-        padding: 30px
+        padding: 40px
     }
 }
 
@@ -5822,7 +5826,8 @@ main {
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 240px;
+    /* width: 240px; */
+    width: 280px;
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
@@ -5832,7 +5837,7 @@ main {
     -webkit-transition: left .2s linear;
     -o-transition: left .2s linear;
     transition: left .2s linear;
-    left: -240px;
+    left: -280px;
     top: 52px;
     padding: 20px
 }
@@ -5854,6 +5859,7 @@ main {
 }
 
 .site-header {
+    /* font-size: 60px; */
     margin-bottom: 30px;
     overflow: hidden
 }
@@ -5863,8 +5869,20 @@ main {
     margin-bottom: 6px
 }
 
+.site-bio {
+    color: #fff9e4;
+    font-family: Cabin, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+    -webkit-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear
+}
+
 .site-brand {
-    color: #000;
+    /* color: #000; */
+    color: #fff;
     font-family: Cabin, Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-weight: 700;
