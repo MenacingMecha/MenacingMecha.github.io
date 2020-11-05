@@ -5786,6 +5786,10 @@ button.close {
     text-align: center
 }
 
+.fa-icon:hover {
+    color: #8eb7d8;
+}
+
 .form-control {
     box-shadow: none
 }
