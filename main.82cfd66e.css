@@ -6053,54 +6053,6 @@ main {
     position: relative;
 }
 
-.content-page-div div {
-    float: left;
-    clear: none;
-    position: absolute;
-}
-
-.content-page-sidebar {
-    /* width: 35%; */
-    float: right;
-}
-
-.content-page-mainbar {
-    /* width: auto; */
-    float: left;
-}
-
-#wrapper {
-    margin: 0 auto;
-    width: 775px;
-    height: 800px;
-    background-color: #fff;
-}
-
-
-#left {
-    float: left;
-    background: #c3d7fc;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    margin-top: 5px;
-    margin-left: 7px;
-    margin-right: 7px;
-    /* width: 286px; */
-    /* width: 100%; */
-    max-width: 30%;
-}
-
-#right {
-    float: right;
-    background: #c3d7fc;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    margin-top: 5px;
-    /* width: 400px; */
-    /* width: 100%; */
-    max-width: 70%;
-}
-
 /* Create two unequal columns that floats next to each other */
 .column {
     float: left;
@@ -6115,7 +6067,10 @@ main {
 }
 
 div.right>img {
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
+    margin-bottom: 40px;
+    border: 5px solid #fff9e4;
+    box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.5);
 }
 
 div.right>img:last-of-type {
@@ -6138,12 +6093,14 @@ div.left>p {
     text-align: justify;
     text-justify: inter-word;
     padding-bottom: 20px;
+    text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
 }
 
 div.left>h1,
 div.left>h2 {
     text-align: center;
-    padding-bottom: 20px
+    padding-bottom: 20px;
+    text-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
 }
 
 /*# sourceMappingURL=main.85741bff.map*/
