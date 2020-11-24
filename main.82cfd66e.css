@@ -340,12 +340,12 @@ body {
     position: relative;
     left: 0;
     top: 0;
-    animation: scrolling 20s linear infinite;
+    animation: scrolling 4s linear infinite;
 }
 
 @keyframes scrolling {
-    100% {
-        background-position: 105% 105%;
+    from {
+        background-position: -144px -138px, 150px 150px;
     }
 }
 
