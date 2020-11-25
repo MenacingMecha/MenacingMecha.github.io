@@ -6051,6 +6051,12 @@ main {
     /* float: left; */
     clear: none;
     position: relative;
+    /* text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5); */
+    font-size: 16px;
+    text-align: justify;
+    text-justify: inter-word;
+    /* padding-bottom: 20px; */
+    text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Create two unequal columns that floats next to each other */
@@ -6060,6 +6066,10 @@ main {
     align-content: center;
     /* height: 300px; */
     /* Should be removed. Only for demonstration */
+}
+
+.column-equal {
+    width: 50%;
 }
 
 .left {
@@ -6088,19 +6098,66 @@ div.right>img:last-of-type {
     clear: both;
 }
 
-div.left>p {
+/* div.column>p { */
+/* .content-page-background>p {
     font-size: 16px;
     text-align: justify;
     text-justify: inter-word;
     padding-bottom: 20px;
     text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
-}
+} */
 
 div.left>h1,
 div.left>h2 {
     text-align: center;
     padding-bottom: 20px;
     text-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* TODO: refactor this mess */
+/* most these floats don't do anything */
+
+.content-page-background li {
+    padding-bottom: 1.0em;
+    float: left;
+}
+
+.past-team-entry {
+    padding-bottom: 5px;
+}
+
+.portrait-image {
+    border: 25px solid #fff9e4;
+    /* border: 30px solid #fff9e4; */
+    background-color: #fff9e4;
+    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.5);
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+    max-width: 300px;
+}
+
+.about-me-panel {
+    max-width: 400px;
+    float: center;
+}
+
+.portrait-panel {
+    margin: 0 auto;
+    float: center;
+    padding-right: 60px;
+}
+
+.about-me-bio {
+    margin: 0 auto;
+    float: center;
+    padding: 50px;
+    padding-bottom: 60px;
+}
+
+.about-me-row {
+    margin: 0 auto;
+    width: 80%;
+    float: center;
 }
 
 /*# sourceMappingURL=main.85741bff.map*/
