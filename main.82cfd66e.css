@@ -57,7 +57,7 @@ template {
 }
 
 a {
-    background-color: transparent
+    background-color: transparent;
 }
 
 a:active,
@@ -361,15 +361,13 @@ textarea {
 a {
     color: #ff6360;
     text-decoration: none;
-    /* font-size: 20px; */
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 a:focus,
 a:hover {
-    /* color: #ff6360; */
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 20px;
+    color: #b83a38;
 }
 
 a:focus {
@@ -5931,6 +5929,10 @@ main {
     /* align-content: center */
 }
 
+.nav-footer>p {
+    text-align: center;
+}
+
 .nav-footer a,
 .nav>li>a {
     /* color: #000 */
@@ -5948,6 +5950,7 @@ main {
 }
 
 .nav-footer-social-buttons {
+    margin: 0 auto;
     margin-bottom: 0;
     /* margin-left: -10px */
     text-align: center;
@@ -6167,6 +6170,31 @@ div.left>h2 {
 
 .column-navbar {
     padding-bottom: 20px;
+    width: 100%;
+}
+
+.column-navbar>img {
+    padding-right: 10px;
+}
+
+.column-navbar>a {
+    color: #fff9e4;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.column-navbar>a:hover {
+    color: #8eb7d8;
+}
+
+.project-text-inner>p {
+    color: #ff6360;
+    transition: 0.3s;
+}
+
+.project-text-holder:hover {
+    font-weight: bold;
+    font-size: 20px;
 }
 
 /*# sourceMappingURL=main.85741bff.map*/
