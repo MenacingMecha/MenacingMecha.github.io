@@ -3960,7 +3960,8 @@ tbody.collapse.in {
 .nav {
     margin-bottom: 0;
     padding-left: 0;
-    list-style: none
+    list-style: none;
+    display: inline-block;
 }
 
 .nav:after,
@@ -6158,6 +6159,14 @@ div.left>h2 {
     margin: 0 auto;
     width: 80%;
     float: center;
+}
+
+.row-navbar {
+    padding: 10px;
+}
+
+.column-navbar {
+    padding-bottom: 20px;
 }
 
 /*# sourceMappingURL=main.85741bff.map*/
