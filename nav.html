@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 <!-- Add your content of header -->
 <header class="">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        var curURL = document.location.toString();
+        var domain = '{{ DOMAIN }}'; // www.example.com or dev.example.com
+        var domain_index = window.location.href.indexOf(domain);
+        var long_app_name = window.location.href.slice(domain_index + domain.length + 1);
+        app_name = long_app_name.slice(long_app_name.indexOf('/') + 1, long_app_name.length);
+        $('a[href*="' + app_name + '"]').closest('a').addClass('active-nav-bar');
+    </script>
+
     <div class="navbar navbar-default visible-xs">
         <button type="button" class="navbar-toggle collapsed">
             <span class="sr-only">Toggle navigation</span>
@@ -15,13 +25,10 @@
         <div class="navbar-collapse" id="navbar-collapse">
             <div class="site-header hidden-xs">
                 <a class="site-brand" href="./index.html" title="">
-                    <!-- <img class="img-responsive site-logo" alt="" src="./assets/images/mashup-logo.svg"> -->
                     <img class="img-responsive site-logo" alt="" src="./assets/images/splash-screen_banner-anim.gif">
-                    <!-- MenacingMecha -->
                 </a>
                 <p class="site-bio">Game designer, <br>gameplay programmer, <br>technical artist, <br>B-movie fan.</p>
             </div>
-            <!-- <ul class="nav"> -->
             <div class="row row-navbar">
                 <div class="column-equal column-navbar">
                     <img src="./assets/images/home.gif">
@@ -31,12 +38,7 @@
                     <img class="nav-gif" src="./assets/images/about.gif">
                     <a href="./about.html" title="">About Me</a></li>
                 </div>
-                <!-- <li><a href="./skills-experience.html" title="">Skills & Experience</a></li> -->
-                <!-- <li><a href="./services.html" title="">Services</a></li> -->
-                <!-- <li><a href="./contact.html" title="">Contact</a></li>
-                <li><a href="./components.html" title="">Components</a></li> -->
             </div>
-            <!-- </ul> -->
 
             <nav class="nav-footer">
                 <p class="nav-footer-social-buttons">
