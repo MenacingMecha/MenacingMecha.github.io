@@ -6131,37 +6131,39 @@ div.left>h2 {
 }
 
 .portrait-image {
-    border: 25px solid #fff9e4;
+    border: 20px solid #fff9e4;
     /* border: 30px solid #fff9e4; */
     background-color: #fff9e4;
     box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.5);
     padding-bottom: 20px;
     margin-bottom: 15px;
-    max-width: 300px;
+    max-width: 200px;
+    display: block;
 }
 
 .about-me-panel {
     max-width: 400px;
-    float: center;
+    margin: auto;
+    /* float: center; */
+    display: block;
 }
 
 .portrait-panel {
     margin: 0 auto;
-    float: center;
     padding-right: 60px;
+    display: block;
 }
 
 .about-me-bio {
-    margin: 0 auto;
-    float: center;
+    margin: auto;
     padding: 50px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
+    display: block;
 }
 
 .about-me-row {
     margin: 0 auto;
-    width: 80%;
-    float: center;
+    display: block;
 }
 
 .row-navbar {
