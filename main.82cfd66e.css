@@ -6060,7 +6060,7 @@ main {
     padding-bottom: 80px;
     /* float: left; */
     clear: none;
-    position: relative;
+    /* position: relative; */
     /* text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5); */
     font-size: 16px;
     text-align: justify;
@@ -6151,25 +6151,27 @@ div.left>h2 {
     max-width: 400px;
     margin: auto;
     /* float: center; */
-    display: block;
+    /* display: block; */
 }
 
 .portrait-panel {
     margin: 0 auto;
     padding-right: 60px;
-    display: block;
+    /* display: block; */
+    /* float: center; */
 }
 
 .about-me-bio {
-    margin: auto;
+    margin: 0 auto;
     padding: 50px;
     padding-bottom: 30px;
-    display: block;
+    /* display: block; */
+    /* float: center; */
 }
 
 .about-me-row {
     margin: 0 auto;
-    display: block;
+    /* display: block; */
 }
 
 .row-navbar {
