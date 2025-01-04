@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>MenacingMecha Blog</title>
+    <description>Long-form posts from MenacingMecha</description>
+    <link>https://www.menacingmecha.uk/blog/</link>
+    <image>
+      <url>https://www.menacingmecha.uk/assets/images/splash-screen_banner-anim.gif</url>
+      <title>MenacingMecha Blog</title>
+      <link>https://www.menacingmecha.uk/blog/</link>
+    </image>
+<item>
+<title>Blogging with org-publish</title>
+<link>https://www.menacingmecha.uk/blog/blogging-with-org-publish.html</link>
+<description>Documenting how I set up this blog (+ RSS!) using org-publish.</description>
+<pubDate>Sat, 04 Jan 2025 16:10:00 GMT</pubDate>
+</item><item>
+<title>Every Film I Watched in 2024</title>
+<link>https://www.menacingmecha.uk/blog/2024-movies.html</link>
+<description>Reviews for all 252 films I watched in 2024.</description>
+<pubDate>Wed, 01 Jan 2025 04:00:00 GMT</pubDate>
+</item>
+  </channel>
+</rss>

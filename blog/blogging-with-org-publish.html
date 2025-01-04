@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blogging with org-publish</title>
+<meta name="description" content="Documenting how I set up this blog (+ RSS!) using org-publish." />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="alternate" type="application/rss+xml" href="rss.xml" title="RSS Feed">
+</head>
+<body>
+<div id="preamble" class="status">
+<nav>
+  <a href="/">&lt; Home</a> <a href="/blog/">&lt; Up</a> <a href="/blog/rss.xml">&gt; rss</a>
+</nav>
+<div id="date">Published: 2025-01-04 Sat 16:10</div>
+<div id="updated">Updated: 2025-01-04 Sat 16:08</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Blogging with org-publish</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#Intro">1. Intro</a></li>
+<li><a href="#Getting pages generated">2. Getting pages generated</a></li>
+<li><a href="#Generating RSS">3. Generating RSS</a></li>
+<li><a href="#Closing Thoughts">4. Next Steps &amp; Closing Thoughts</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Intro" class="outline-2">
+<h2 id="Intro"><span class="section-number-2">1.</span> <a href="#Intro">Intro</a></h2>
+<div class="outline-text-2" id="text-Intro">
+<p>
+After scripting the export of <a href="2024-movies.html">Every Film I Watched in 2024</a> from my <code>org-roam</code> nodes (which I'll probably write a blog post about at a later date), I thought it was nigh time to stop procrastinating on my plans to set up a blog with Hugo or whatever.  Unsurprisingly, <code>org-publish</code> made for a great workflow that ties in closely with how I already write, and is able to meet my specific needs of wanting to have a fancy flashy homepage that's kept separate from a low-spec blog.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Getting pages generated" class="outline-2">
+<h2 id="Getting pages generated"><span class="section-number-2">2.</span> <a href="#Getting pages generated">Getting pages generated</a></h2>
+<div class="outline-text-2" id="text-Getting pages generated">
+<p>
+As a starting point, I followed these two guides:
+</p>
+<ul class="org-ul">
+<li><a href="https://systemcrafters.net/publishing-websites-with-org-mode/building-the-site/">https://systemcrafters.net/publishing-websites-with-org-mode/building-the-site/</a></li>
+<li><a href="https://taingram.org/blog/org-mode-blog.html">https://taingram.org/blog/org-mode-blog.html</a></li>
+</ul>
+
+<p>
+This was more than enough to generate pages with the kind of sitemap index I was after.  There's not much to say about this stage, even.  Just iteratively tweaking config settings and the various different settings in <code>org-publish-project-alist</code>, then running the build script.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Generating RSS" class="outline-2">
+<h2 id="Generating RSS"><span class="section-number-2">3.</span> <a href="#Generating RSS">Generating RSS</a></h2>
+<div class="outline-text-2" id="text-Generating RSS">
+<p>
+RSS was an absolute make-or-break for me having a blog, and potential complications (or just generally complicating the workflow) is probably the main reason I procrastinated so long on finally setting up a blogging workflow.
+</p>
+
+<p>
+As I started researching, it looked like <code>ox-rss</code> would work, but unfortunately it turns out that it wants to convert an individual org doc by headline into an RSS XML.  This would involve a lot of faffing to automatically generate the doc in order to automatically generate RSS, as well as needing to pull packages in the build script in order to actually get ox-rss.  These were bad flags.
+</p>
+
+<p>
+However, as RSS is pretty simple XML, and part of <code>org-publish</code> is iterating over blog entries anyway, I decided to script my own RSS.  This ended up being simpler than I anticipated, and would easily recommend folk to roll their own if the need arises.
+</p>
+
+<p>
+First, I'd need to extract the data I'd need for each RSS item when iterating over each page:
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(setq rss-entry-data '())
+
+(defun my/org-html-publish-to-html (plist filename pub-dir)
+  (let ((is-processing-index (string-match-p "/index.org$" filename)))
+    (when is-processing-index
+      (setq plist (plist-put plist :html-preamble "&lt;nav&gt;
+  &lt;a href=\"/\"&gt;&amp;lt; Home&lt;/a&gt; &lt;a href=\"/blog/\"&gt;&amp;lt; Up&lt;/a&gt; &lt;a href=\"/blog/rss.xml\"&gt;&amp;gt; rss&lt;/a&gt;
+&lt;/nav&gt;
+&lt;div id=\"updated\"&gt;Updated: %C&lt;/div&gt;"))
+      (print plist))
+    (let* ((pwd (file-name-directory (or load-file-name (buffer-file-name))))
+         (output-file (org-html-publish-to-html plist filename pub-dir))
+         (link (string-trim-left output-file pub-dir)))
+      (when (not is-processing-index)
+      (let ((buffer (find-file filename)))
+        (with-current-buffer buffer
+            (let* ((kwds (org-collect-keywords '("TITLE" "DATE" "DESCRIPTION")))
+                 (title (cadr (assoc "TITLE" kwds)))
+                 (timestamp-org (cadr (assoc "DATE" kwds)))
+                 (desc (cadr (assoc "DESCRIPTION" kwds))))
+              (cond ((null timestamp-org)
+                   (user-error (format "Article '%s' missing DATE property." title)))
+                  ((null desc)
+                   (user-error (format "Article '%s' missing DESC property." title))))
+            (push (list (list "title" title)
+                        (list "date" (org-time-string-to-time timestamp-org))
+                        (list "link" link)
+                        (list "desc" desc))
+                  rss-entry-data)))
+        ;; for whatever reason, pub-dir ends up changed if I don't kill this buffer
+        (kill-buffer buffer))))))
+</pre>
+</div>
+
+<p>
+Next, after org-publish has finished building pages, I use that data to generate an RSS XML with simple string substitution:
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(defun my/rss-data-&gt;rss-string (data)
+  (let ((title (cadr (assoc "title" data)))
+      (link (concat target-url (cadr (assoc "link" data))))
+      (desc (cadr (assoc "desc" data)))
+      (date (my/time-to-rfc822-string (cadr (assoc "date" data)))))
+    (format "&lt;item&gt;
+&lt;title&gt;%s&lt;/title&gt;
+&lt;link&gt;%s&lt;/link&gt;
+&lt;description&gt;%s&lt;/description&gt;
+&lt;pubDate&gt;%s&lt;/pubDate&gt;
+&lt;/item&gt;"
+          title
+            link
+            desc
+          date)))
+
+(defun my/time-to-rfc822-string (time)
+  (format-time-string "%a, %d %b %Y %T %Z" time))
+
+(with-temp-file "./public/blog/rss.xml"
+  (insert (format "&lt;?xml version=\"1.0\" encoding=\"UTF-8\" ?&gt;
+&lt;rss version=\"2.0\"&gt;
+  &lt;channel&gt;
+    &lt;title&gt;MenacingMecha Blog&lt;/title&gt;
+    &lt;description&gt;Long-form posts from MenacingMecha&lt;/description&gt;
+    &lt;link&gt;%s&lt;/link&gt;
+    &lt;image&gt;
+      &lt;url&gt;https://www.menacingmecha.uk/assets/images/splash-screen_banner-anim.gif&lt;/url&gt;
+      &lt;title&gt;MenacingMecha Blog&lt;/title&gt;
+      &lt;link&gt;%s&lt;/link&gt;
+    &lt;/image&gt;
+%s
+  &lt;/channel&gt;
+&lt;/rss&gt;"
+                target-url
+                target-url
+                (mapconcat 'my/rss-data-&gt;rss-string (reverse rss-entry-data)))))
+</pre>
+</div>
+
+<p>
+From here, we have a fully formed <a href="http:menacingmecha.uk/blog/rss.xml">RSS feed</a>!
+</p>
+</div>
+</div>
+
+<div id="outline-container-Closing Thoughts" class="outline-2">
+<h2 id="Closing Thoughts"><span class="section-number-2">4.</span> <a href="#Closing Thoughts">Next Steps &amp; Closing Thoughts</a></h2>
+<div class="outline-text-2" id="text-Closing Thoughts">
+<p>
+Overall, I'm very happy with how this workflow has turned out.  I might look into a little more styling (font colours for these source blocks would be nice), but I also don't mind these posts being very low-spec; save the flashy stuff for the homepage.  I'm more than willing to sacrifice featuers if it means I can avoid pulling packages as part of the build script.
+</p>
+
+<p>
+If you're interested, the source for these blog pages and the accompanying build script is available here: <a href="https://codeberg.org/MenacingMecha/blog">https://codeberg.org/MenacingMecha/blog</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr/>
+<footer>
+  <div class="generated">
+    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)
+ </div>
+</footer>
+</div>
+</body>
+</html>
