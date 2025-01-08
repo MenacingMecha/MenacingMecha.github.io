@@ -10,7 +10,12 @@
       <link>https://www.menacingmecha.uk/blog/</link>
     </image>
 <item>
-<title>Blogging with org-publish</title>
+<title>Processing ~org-roam~ to export every film review I wrote in 2024</title>
+<link>https://www.menacingmecha.uk/blog/processing-org-roam-to-export-every-film-review-i-wrote-in-2024.html</link>
+<description>Documenting the process behind https://www.menacingmecha.uk/blog/2024-movies.html</description>
+<pubDate>Wed, 08 Jan 2025 15:45:00 GMT</pubDate>
+</item><item>
+<title>Blogging with ~org-publish~</title>
 <link>https://www.menacingmecha.uk/blog/blogging-with-org-publish.html</link>
 <description>Documenting how I set up this blog (+ RSS!) using org-publish.</description>
 <pubDate>Sat, 04 Jan 2025 16:10:00 GMT</pubDate>

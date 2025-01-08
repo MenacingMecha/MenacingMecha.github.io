@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Processing ~org-roam~ to export every film review I wrote in 2024</title>
+<meta name="description" content="Documenting the process behind https://www.menacingmecha.uk/blog/2024-movies.html" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="alternate" type="application/rss+xml" href="rss.xml" title="RSS Feed">
+</head>
+<body>
+<div id="preamble" class="status">
+<nav>
+  <a href="/">&lt; Home</a> <a href="/blog/">&lt; Up</a> <a href="/blog/rss.xml">&gt; rss</a>
+</nav>
+<div id="date">Published: 2025-01-08 Wed 15:45</div>
+<div id="updated">Updated: 2025-01-08 Wed 17:45</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Processing <code>org-roam</code> to export every film review I wrote in 2024</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd1d01f3">1. Intro</a></li>
+<li><a href="#org0812f43">2. What data we working with?</a>
+<ul>
+<li><a href="#org7eff27f">2.1. Films with one review</a></li>
+<li><a href="#org5ed58bc">2.2. Films with multiple reviews</a></li>
+</ul>
+</li>
+<li><a href="#orga449d31">3. How we processing this?</a>
+<ul>
+<li><a href="#org60cd9fe">3.1. Filtering &amp; Sorting</a></li>
+<li><a href="#orgc46f6c9">3.2. Mapping</a></li>
+</ul>
+</li>
+<li><a href="#org0a7efd7">4. Issues &amp; Next Steps</a>
+<ul>
+<li><a href="#org8802da2">4.1. Film Posters</a></li>
+<li><a href="#orgc8bbaba">4.2. Spoiler Sections</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd1d01f3" class="outline-2">
+<h2 id="orgd1d01f3"><span class="section-number-2">1.</span> <a href="#orgd1d01f3">Intro</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I watch a lot of films.  A <i>lot</i> of films (or movies - the word is interchangeable here).  Last year I watched exactly 252 movies.  That's roughly 1 movie every 0.69 days.  Nice.
+</p>
+
+<p>
+In an effort to practice writing (as well as just not forgetting what my thoughts were on a given film, which tended to happen a lot prior to this), I write reviews for every film I watch.  This leaves me with a lot of reviews written.  56k words, which works out to around 222 words per movie for you number freaks at home.
+</p>
+
+<p>
+Because there's so much, I thought it'd be nice to spit out a big doc at the end of the year in order to organise everything for somewhere more permanent than social media, like this blog.
+</p>
+
+<p>
+By the end, I ended up with <a href="2024-movies.html">Every Film I Watched in 2024</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org0812f43" class="outline-2">
+<h2 id="org0812f43"><span class="section-number-2">2.</span> <a href="#org0812f43">What data we working with?</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+With every film I watch, I create an <code>org-roam</code> node with a heading to layout the review.
+</p>
+</div>
+<div id="outline-container-org7eff27f" class="outline-3">
+<h3 id="org7eff27f"><span class="section-number-3">2.1.</span> <a href="#org7eff27f">Films with one review</a></h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+This looks something like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-org">:PROPERTIES:
+:ID:       52813152-7c5b-44bf-a361-e90a1690204a
+:END:
+#+title: Eraserhead (1977)
+#+filetags: :movie:review:
+#+startup: content
+* Description
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+1st [[id:752c4954-f4b9-4d8e-ad2a-68790beaed13][David Lynch]] [[id:8124ef7e-f2b5-4e3c-bedb-6ba5d36c3952][movie]].  Much more experimental and visually surreal compared to all of his films after.
+
+* Review
+:PROPERTIES:
+:DATE:     [2024-03-16 Sat 05:52]
+:MASTODON_POST_URL: https://mastodon.gamedev.place/@MenacingMecha/112103976959275394
+:END:
+It's not my favourite Lynch, but there's a lot here to love.  Also a little less sure on specific specifics with this watch, but as we're firmly in the experimental space, that's less important than ever.
+
+Biggest thing to mention is just how different this is to every other Lynch film; his style didn't really take form until [[id:a7010ff9-ef02-438d-bcec-4f4e5184b174][Blue Velvet (1986)]], so here you get a much more "standard" visual-focused surrealism, that is very lite on dialogue.  It's not really a negative, but it means it's a lot harder to recommend as an early Lynch film, because of just how different it is.
+
+As experimental films go, it's very accessible.  It's only 90 minutes, the narrative is extremely clear, and it's surprisingly riff-able, meaning it can function as a fun hangout movie.  Compare this to Inland Empire (2006), which is 2h48, comprised almost entirely of unintelligible scenes and requires you to sit silently in a dark room uninterrupted to not break the magic.
+
+** Cut
+autistic reading TK
+</pre>
+</div>
+
+<p>
+The important areas here are the filetags, review body, and the DATE property of the review.  Only the text directly under the Review headline gets processed, any subsequent or child headlines are cut.  This allows me to cut incomplete thoughts or private in-jokes that I'd still like to keep, but not include in a public review (in Eraserhead's case, incomplete thought).
+</p>
+</div>
+</div>
+<div id="outline-container-org5ed58bc" class="outline-3">
+<h3 id="org5ed58bc"><span class="section-number-3">2.2.</span> <a href="#org5ed58bc">Films with multiple reviews</a></h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Handling films with multiple reviews is a little more hacky.  Instead of a "Review" headline, I instead have a "Reviews" headline, making sure to include the year in the 2nd level heading.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">:PROPERTIES:
+:ID:       63d61837-eb3b-4092-81be-0b9fb91f9437
+:END:
+#+title: Gremlins (1984)
+#+filetags: :review:movie:
+#+startup: content
+* Description
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+Joe Dante little creature Christmas [[id:8124ef7e-f2b5-4e3c-bedb-6ba5d36c3952][movie]].  Prequel to Gremlins 2: The New Batch (1990).
+* Reviews
+** 1 - 2023
+:PROPERTIES:
+:DATE:     [2023-12-22 Fri 02:50]
+:MASTODON_POST_URL: https://mastodon.gamedev.place/@MenacingMecha/111621886220783937
+:END:
+...
+** 2 - 2024
+:PROPERTIES:
+:DATE:     [2024-12-27 Fri 04:00]
+:MASTODON_POST_URL: https://mastodon.gamedev.place/@MenacingMecha/113722782376856024
+:END:
+...
+</pre>
+</div>
+
+<p>
+Very important to note here that I currently don't have a solution for multiple reviews in the same year, but I'll cross that bridge when I come to it.  I think the only instance this could've happened was with Twin Peaks: Fire Walk with Me (1992), but the second rewatch of that year was close enough to the first that I didn't feel the need to write a review.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga449d31" class="outline-2">
+<h2 id="orga449d31"><span class="section-number-2">3.</span> <a href="#orga449d31">How we processing this?</a></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+We have two distinct steps to this:
+</p>
+<ol class="org-ol">
+<li>Filtering the <code>org-roam</code> nodes into just the nodes we're interested in, and sorting them by review date.</li>
+<li>Processing that list of the nodes we're interested in, and writing that to a new org document.</li>
+</ol>
+
+<p>
+As both of these tasks take a non-inconsequential amount of time to compute, I'd like to cache the results of the first step to waste less time, as the filtered list changes much less frequently.  Because of this, I'm running both steps as <code>org-babel</code> blocks.
+</p>
+</div>
+<div id="outline-container-org60cd9fe" class="outline-3">
+<h3 id="org60cd9fe"><span class="section-number-3">3.1.</span> <a href="#org60cd9fe">Filtering &amp; Sorting</a></h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-org">#+NAME: movie-date-map
+#+begin_src elisp :results table :colnames '(TITLE "REVIEW DATE") :cache yes
+  (let* ((nodes (org-roam-ql-nodes '(tags "movie" "review")))
+         (film-date-map (mapcar (lambda (x)
+                              (list (format "[[id:%s][%s]]"
+                                            (org-roam-node-id x)
+                                            (org-roam-node-title x))
+                                        (with-temp-buffer (insert-file-contents (cdr (assoc "FILE" (org-roam-node-properties x))) nil)
+                                                          (cond ((search-forward "\* Reviews" nil t)
+                                                             (search-forward "2024"))
+                                                            ((search-forward "\* Review" nil t))
+                                                            (t (message "No event timestamp on current line.")))
+                                                      (org-mode)
+                                                      (org-entry-get nil "DATE"))))
+                            nodes))
+         (filtered-map (seq-filter (lambda (x)
+                                 (let ((date (nth 1 x)))
+                                   (if date
+                                       (string-match-p "2024-" date)
+                                     nil)))
+                               film-date-map))
+         (sorted-map (seq-sort (lambda (a b)
+                                 (&lt; (org-time-string-to-seconds (nth 1 a))
+                                (org-time-string-to-seconds (nth 1 b))))
+                           filtered-map)))
+    sorted-map)
+#+end_src
+
+#+RESULTS[e0e061b0f377cad45b98b60193f4370ad22de0c3]: movie-date-map
+| TITLE                                                   | REVIEW DATE            |
+|---------------------------------------------------------+------------------------|
+| [[id:0f02d620-3bdf-45bc-937a-94f01c232c7a][The Wicked City (1992)]]                                  | [2024-01-02 Tue 04:02] |
+| [[id:d2e2800e-9abd-44df-8ba2-4b009f4d15f3][Are We There Yet (2005)]]                                 | [2024-01-02 Tue 04:32] |
+| [[id:50a377f6-6cf3-4249-90d1-073f7b9fa443][An Adventure in Space and Time (2013)]]                   | [2024-01-05 Fri 03:23] |
+| [[id:205446f4-9190-496c-b611-4e51d8f344b3][Twin Peaks: Fire Walk with Me (1992)]]                    | [2024-01-11 Thu 01:50] |
+
+etc...
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc46f6c9" class="outline-3">
+<h3 id="orgc46f6c9"><span class="section-number-3">3.2.</span> <a href="#orgc46f6c9">Mapping</a></h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-org">#+begin_src elisp :results silent :var movie-date-map=movie-date-map
+  (defun get-review-text-from-filepath (path)
+    (with-temp-buffer
+      (insert-file-contents path nil)
+      (let ((film-title (org-get-title))
+        (bt (buffer-string)))
+        ;; go to review body
+        (cond ((string-match "\* Reviews" bt)
+           (progn (search-forward "\* Reviews")
+                      (search-forward "2024")))
+          ((string-match "\* Review" bt)
+           (search-forward "\* Review"))
+              (t (message "No event timestamp on current line.")))
+        (search-forward "\:END\:")
+        (delete-region (point-min) (point)) ; delete everything pre-review
+        (insert (concat "* " film-title))
+        (org-mode)
+        (org-set-property "CUSTOM_ID" film-title)
+        (org-next-visible-heading 1)
+        (delete-region (point) (point-max)) ; delete everything post main review block (no cut sections, etc.)
+        (end-of-buffer)
+        (newline)
+        ;; remove all links - source: https://emacs.stackexchange.com/a/10714
+        (goto-char (point-min))
+        (while (re-search-forward org-link-bracket-re nil t)
+          (replace-match (match-string-no-properties
+                          (if (match-end 2) 2 1))))
+        ;; replace all .mp4 links with html video
+        (goto-char (point-min))
+        (while (re-search-forward "http.+\.mp4" nil t)
+          (replace-match "#+begin_export html
+   &lt;video controls&gt;
+    &lt;source src=\"\\&amp;\" type=\"video/mp4\"&gt;
+  Your browser does not support the video tag.
+  &lt;/video&gt;
+  ,#+end_export")))
+      (buffer-string)))
+
+  (defun get-ids-from-map (map)
+    (mapcar (lambda (i) (car i))
+        map))
+
+  (defun get-review-text-from-id (id)
+    (let ((path (with-temp-buffer
+              (org-link-open-from-string id)
+              (buffer-file-name))))
+      (get-review-text-from-filepath path)))
+
+  (let ((wc (current-window-configuration))
+        (doc-path "~/2024-movies.org"))
+    (with-temp-file doc-path
+      (insert "#+TITLE: Every Film I Watched in 2024
+  ,#+AUTHOR: MenacingMecha
+  ,#+OPTIONS: toc:nil
+
+  ,*CONTENT WARNING:*
+  I watch a very large variety of films.  Everything from Critereon classics to pervert VHS trash.  I frequently like to go out of my comfort zone and take huge gambles, or sometimes even just dive into things I know will appal me.  As such, expect a lot of dark and/or poorly aged content.
+
+  Unless otherwise specified, I won't include any spoilers for things that I think would harm the viewing experience to know going in, but you might have a different line for how much is acceptable.
+
+  ,#+TOC: headlines 1
+  ")
+      (-&gt;&gt; (get-ids-from-map movie-date-map)
+       (mapcar 'get-review-text-from-id)
+       (mapcar 'insert)))
+    (set-window-configuration wc)
+    (find-file-other-window doc-path))
+#+end_src
+</pre>
+</div>
+
+<p>
+Some important extra steps here:
+</p>
+<ol class="org-ol">
+<li>Links to other <code>org</code> id's are stripped, as they are not properly exported.</li>
+<li>Links to videos are substituted with HTML video tags, causing them to be embedded.</li>
+</ol>
+
+<p>
+From this, I have the <code>org</code> file I can throw into my <a href="blogging-with-org-publish.html"><code>org-publish</code> blog content folder</a>, ending up with <a href="2024-movies.html">Every Film I Watched in 2024</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0a7efd7" class="outline-2">
+<h2 id="org0a7efd7"><span class="section-number-2">4.</span> <a href="#org0a7efd7">Issues &amp; Next Steps</a></h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org8802da2" class="outline-3">
+<h3 id="org8802da2"><span class="section-number-3">4.1.</span> <a href="#org8802da2">Film Posters</a></h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Currently there are no film posters included alongside the titles, leading to an overly text-heavy output.  While I always include film posters in my <a href="https://mastodon.gamedev.place/@MenacingMecha">Mastodon</a> posts, I left it too late in the year before I realised I didn't have a good workflow for including these.
+</p>
+
+<p>
+While there's not much I can do for 2024's doc (at least not without an unreasonable amount of hassle), I've adressed this for next year by also adding a <code>:POSTER:</code> property to the review headline, with a URL link I can paste under the title headline when processing the end of year doc.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc8bbaba" class="outline-3">
+<h3 id="orgc8bbaba"><span class="section-number-3">4.2.</span> <a href="#orgc8bbaba">Spoiler Sections</a></h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Additionally, while fairly rare, I do sometimes get into major spoilers for a particular film.  It would be nice if I could display these as an opt-in blocks.  IIRC there's easy HTML-only ways to achieve this, so it shouldn't be too tricky.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr/>
+<footer>
+  <div class="generated">
+    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)
+ </div>
+</footer>
+</div>
+</body>
+</html>
