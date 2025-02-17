@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Migrating my YouTube workflow to RSS</title>
+<meta name="description" content="Documenting my steps of moving from an automated ytdl-sub to a manual RSS review" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="alternate" type="application/rss+xml" href="rss.xml" title="RSS Feed">
+</head>
+<body>
+<div id="preamble" class="status">
+<nav>
+  <a href="/">&lt; Home</a> <a href="/blog/">&lt; Up</a> <a href="/blog/rss.xml">&gt; rss</a>
+</nav>
+<div id="date">Published: 2025-02-17 Mon 19:55</div>
+<div id="updated">Updated: 2025-02-17 Mon 19:55</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Migrating my YouTube workflow to RSS</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org30d70bf">1. Intro</a></li>
+<li><a href="#org6670621">2. <code>ytdl-sub</code> &amp; Issues</a></li>
+<li><a href="#org17f2386">3. Enter RSS</a></li>
+<li><a href="#orgeee040b">4. Getting an OPML of my YouTube subscriptions</a>
+<ul>
+<li><a href="#org52daddd">4.1. Attempt 1</a></li>
+<li><a href="#orgbc99e4c">4.2. Attempt 2</a></li>
+</ul>
+</li>
+<li><a href="#orga9028ff">5. Importing OPML into <code>elfeed-org</code></a></li>
+<li><a href="#org2a38a95">6. <code>elfeed</code> review 'n' queue workflow</a></li>
+<li><a href="#org6a96fb7">7. Future steps</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org30d70bf" class="outline-2">
+<h2 id="org30d70bf"><span class="section-number-2">1.</span> <a href="#org30d70bf">Intro</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+YouTube - the platform - sucks to use no matter where you're using it.  Outside of the browser, without ad blockers, you're spammed with so many ads it becomes a challenge to actually use.  When you can actually use an ad blocker, there's often issues with videos getting stuck, or occasional weird performance issues on the website itself (this might be an Nvidia on Linux thing, it's always an Nvidia on Linux thing).
+</p>
+
+<p>
+However, I still very much want to watch YouTube - the videos.  People have suggested to me in the past I use an alternate front-end like <a href="https://invidious.io/">Invidious</a>, but my watch time is split (very roughly, not actually) 50/50 between browser and Android box, so anything browser-only is a no-go.
+</p>
+</div>
+</div>
+<div id="outline-container-org6670621" class="outline-2">
+<h2 id="org6670621"><span class="section-number-2">2.</span> <a href="#org6670621"><code>ytdl-sub</code> &amp; Issues</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+For a while, I happily used <a href="https://github.com/jmbannon/ytdl-sub">ytdl-sub</a> in a Docker container, running on my home server.  This worked great for a time, downloading all my subscriptions alongside writing the metadata for <a href="https://jellyfin.org/">Jellyfin</a> to group them by channel, and write the video descriptions, etc.
+</p>
+
+<p>
+Even while it worked well, however, Jellyfin's interface for browsing these videos wasn't perfect.  Browsing each channel as a separate contained show is useful every now and again, but mostly you just want a big list of videos, sorted by date added.
+</p>
+
+<p>
+Then, things started breaking.  Every so often, I'd realised "hey, it's been a couple days since I last had a video download&#x2026;", and then days would turn into weeks.  I'd check the repo, and there'd be no updates, nor workarounds documented in the issue tracker, so would have to manually start downloading the missing videos by going through my sub box, and copy-pasting a lot of URLs to a yt-dlp command.
+</p>
+
+<p>
+This was quickly becoming untenable.
+</p>
+
+<p>
+And I'm not sure if this is an issue with <code>ytdl-sub</code>, or if my Docker-fu is just not up to snuff, but I found it really hard to get any readable logs to even figure out what the issue was.  Whenever I'd check, it'd seem to be processing just fine, when in reality it was failing to be able to download anything.  This was different whenever I ran the command manually, but then if it did download videos correctly, the file permissions would be screwed up, and I'd have to start SSH'ing in and <code>sudo rm</code>'ing 10 minute YouTube vids.  Which - as you could imagine - was not something I wanted to have to do.
+</p>
+</div>
+</div>
+<div id="outline-container-org17f2386" class="outline-2">
+<h2 id="org17f2386"><span class="section-number-2">3.</span> <a href="#org17f2386">Enter RSS</a></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+I have actually tried to use RSS for YouTube before, but it never stuck, precisely because of the aforementioned (rough) 50/50 split of watching on browser vs watching on Android box.  It is a hard requirement for me to be able to watch a chunk of a long video on one, and then resume that video on the other.  If you don't have that requirement, it's a lot easier, but there's still a lot of info here that you might benefit from.
+</p>
+
+<p>
+Another issue I thought I might as well solve while I was at it, was that it's rare I actually want to watch <i>every</i> video from a given sub.  This would often lead to a lot of deleting videos in Jellyfin I wasn't going to watch, meaning I spent all that time and bandwidth downloading them for no reason.  The manual review process of going through my YouTube subscriptions in my feed reader would alleviate this completely.
+</p>
+</div>
+</div>
+<div id="outline-container-orgeee040b" class="outline-2">
+<h2 id="orgeee040b"><span class="section-number-2">4.</span> <a href="#orgeee040b">Getting an OPML of my YouTube subscriptions</a></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Getting an individual RSS feed from a YouTube channel was as simple for me as installing a browser addon to sniff out feeds form a given page (<a href="https://github.com/aureliendavid/rsspreview">https://github.com/aureliendavid/rsspreview</a>), and then navigating to a channel (occasionally having to refresh the page a couple times).
+</p>
+
+<p>
+However, wanting this RSS workflow to stick this time, I wanted a solution to get <i>all</i> of my subscriptions into RSS.
+</p>
+
+<p>
+Enter OPML.
+</p>
+
+<p>
+Both methods involve navigating to <a href="https://www.youtube.com/feed/channels">https://www.youtube.com/feed/channels</a>, scrolling down the bottom to make sure everything has loaded, then pasting a script into the browser dev console.
+</p>
+</div>
+<div id="outline-container-org52daddd" class="outline-3">
+<h3 id="org52daddd"><span class="section-number-3">4.1.</span> <a href="#org52daddd">Attempt 1</a></h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+First, I tried the method described in <a href="https://dhariri.com/blog/youtube-sub-download/">https://dhariri.com/blog/youtube-sub-download/</a>.
+</p>
+
+<p>
+This worked - and worked fast - but didn't have the feeds titled, which lead to an awkward import with <code>elfeed-org</code>.  This might be more than enough for other readers, however.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbc99e4c" class="outline-3">
+<h3 id="orgbc99e4c"><span class="section-number-3">4.2.</span> <a href="#orgbc99e4c">Attempt 2</a></h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Next, I tried the method described in <a href="https://github.com/jeb5/YouTube-Subscriptions-RSS">https://github.com/jeb5/YouTube-Subscriptions-RSS</a>.
+</p>
+
+<p>
+This ran SLOW, with a cute little progress dialog on screen.  This filled me with more hope, and I was right to be hopeful!  At the end, I got a nicely formatted OPML complete with subscriptions.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga9028ff" class="outline-2">
+<h2 id="orga9028ff"><span class="section-number-2">5.</span> <a href="#orga9028ff">Importing OPML into <code>elfeed-org</code></a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+From here, I was able to run <code>elfeed-org-import-opml</code> on the generated OPML file, and add that to my feed tree.
+</p>
+
+<p>
+A little bit of manual tagging later, I was done!
+</p>
+</div>
+</div>
+<div id="outline-container-org2a38a95" class="outline-2">
+<h2 id="org2a38a95"><span class="section-number-2">6.</span> <a href="#org2a38a95"><code>elfeed</code> review 'n' queue workflow</a></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Now, with all of my YouTube subscriptions in <code>elfeed</code>, the only step left was to set up my ideal "review 'n' queue" workflow.
+</p>
+
+<p>
+This ended up being extremely simple.  With a small <code>elisp</code> function bound to an easy-to-reach key in <code>elfeed-search-mode-map</code>, I can quickly alternate between marking read to skip or adding to a download queue.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">my/elfeed-queue-yt-dl</span> ()
+  <span style="font-style: italic;">"Add yt-dlp of link of item at point to task queue."</span>
+  (<span style="font-weight: bold;">interactive</span>)
+  (shell-command (concat <span style="font-style: italic;">"ts yt-dlp -P ~/server/raid/archive/media/vid/yt "</span>
+                       (shell-quote-argument (elfeed-entry-link (elfeed-search-selected t)))))
+  (elfeed-search-untag-all-unread))
+</pre>
+</div>
+
+<p>
+The important part here is <code>ts</code>, as this adds the command to a <a href="https://manpages.debian.org/jessie/task-spooler/tsp.1">task spooler</a> queue (<code>ts</code> may be <code>tsp</code> in your distribution).  This allows me to rapid fire go through my subscriptions, avoiding the awkward step of filtering out the ones I want to skip, then adding a big <code>yt-dlp</code> call to <code>async-shell-command</code> with all of the URLs.  You could do this if you wanted, though.
+</p>
+</div>
+</div>
+<div id="outline-container-org6a96fb7" class="outline-2">
+<h2 id="org6a96fb7"><span class="section-number-2">7.</span> <a href="#org6a96fb7">Future steps</a></h2>
+<div class="outline-text-2" id="text-7">
+<p>
+For now, I'm happy with this new workflow.  I do have the following ideas of things to improve, however:
+</p>
+
+<ol class="org-ol">
+<li>Writing a <code>yt-dlp</code> wrapper script to write the video's description and URL to Jellyfin metadata, like <code>ytdl-sub</code> did.</li>
+<li>A way to quickly add new RSS feeds, probably using <code>org-capture</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr/>
+<footer>
+  <div class="generated">
+    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)
+ </div>
+</footer>
+</div>
+</body>
+</html>
