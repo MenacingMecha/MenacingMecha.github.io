@@ -20,6 +20,11 @@
 <description>Documenting how I set up this blog (+ RSS!) using org-publish.</description>
 <pubDate>Sat, 04 Jan 2025 16:10:00 GMT</pubDate>
 </item><item>
+<title>Effortless VPN on NixOS using Mullvad</title>
+<link>https://www.menacingmecha.uk/blog/effortless-vpn-on-nixos.html</link>
+<description>Documenting my steps of setting up Mullvad VPN on NixOS</description>
+<pubDate>Sun, 27 Jul 2025 13:53:00 BST</pubDate>
+</item><item>
 <title>Migrating my YouTube workflow to RSS</title>
 <link>https://www.menacingmecha.uk/blog/migrating-youtube-workflow-to-rss.html</link>
 <description>Documenting my steps of moving from an automated ytdl-sub to a manual RSS review</description>

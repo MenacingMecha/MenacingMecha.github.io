@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Effortless VPN on NixOS using Mullvad</title>
+<meta name="description" content="Documenting my steps of setting up Mullvad VPN on NixOS" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="alternate" type="application/rss+xml" href="rss.xml" title="RSS Feed">
+</head>
+<body>
+<div id="preamble" class="status">
+<nav>
+  <a href="/">&lt; Home</a> <a href="/blog/">&lt; Up</a> <a href="/blog/rss.xml">&gt; rss</a>
+</nav>
+<div id="date">Published: 2025-07-27 Sun 13:53</div>
+<div id="updated">Updated: 2025-07-27 Sun 13:53</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Effortless VPN on NixOS using Mullvad</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org98e8d94">1. Intro</a></li>
+<li><a href="#org0c3b06b">2. Why I chose Mullvad vs other VPNs</a></li>
+<li><a href="#org779fa76">3. Simple as possible set up</a></li>
+<li><a href="#org7b95420">4. Conclusion</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org98e8d94" class="outline-2">
+<h2 id="org98e8d94"><span class="section-number-2">1.</span> <a href="#org98e8d94">Intro</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Currently in the UK, the government has introduced the Online Safety Act.  Under the guise of protecting children from seeing NSFW content, in practice this bill mass censors vast swathes of the internet for everyone - including SFW content!  Even fucking Wikipedia is in the crosshairs!
+</p>
+
+<p>
+As it's designed to only prevent children, you can just send sensitive private info to a private service that's definitely secure and won't run into any issues.  No thanks!
+</p>
+
+<p>
+While I've never used a VPN before, now is a fantastic time to start.
+</p>
+</div>
+</div>
+<div id="outline-container-org0c3b06b" class="outline-2">
+<h2 id="org0c3b06b"><span class="section-number-2">2.</span> <a href="#org0c3b06b">Why I chose Mullvad vs other VPNs</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+I've chosen to go with <a href="https://mullvad.net">Mullvad</a> over other VPN services, as Mullvad is simply the most no-nonsense.  While it's reportedly slower and less feature-full than others, I just want something that is simple and does not get in the way for the time being.
+</p>
+
+<p>
+You don't even make an account!  You just generate a sequence of numbers and use that as a log-in.  Could not get any simpler.
+</p>
+
+<p>
+This lack of account also gives me a lot more confidence in the service's privacy and straightforwardness.  I'm not worried about being spammed with offers, or enshittification, or being forced to go through annoying menus to do anything.  Just simple, straightforward, and out of the way.
+</p>
+</div>
+</div>
+<div id="outline-container-org779fa76" class="outline-2">
+<h2 id="org779fa76"><span class="section-number-2">3.</span> <a href="#org779fa76">Simple as possible set up</a></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+I was very concerned that set up was going to be a huge PITA - <i>especially</i> on NixOS.  Seeing some of the example Nix blocks started to make me very anxious that I'd have to burn a day on figuring out how to get it working.
+</p>
+
+<p>
+So here's how I got it working:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nix">services.mullvad-vpn = {
+  enable = true;
+  package = pkgs.mullvad-vpn;
+};
+</pre>
+</div>
+
+<p>
+That's&#x2026; that's it.
+</p>
+
+<p>
+I rebuilt my system, opened the GUI app, logged in, and everything just worked.  And the GUI app is fine!  Fully happy with using this instead of setting up something more complicated.
+</p>
+</div>
+</div>
+<div id="outline-container-org7b95420" class="outline-2">
+<h2 id="org7b95420"><span class="section-number-2">4.</span> <a href="#org7b95420">Conclusion</a></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+For the time being, this works for me.  Whether or not I'll want some more in-depth features or better speed down the line, we'll see.
+</p>
+
+<p>
+We'll see how long this Online Safety Act lasts in it's current state, also.  Not good, people.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr/>
+<footer>
+  <div class="generated">
+    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.11)
+ </div>
+</footer>
+</div>
+</body>
+</html>
