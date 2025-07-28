@@ -25,30 +25,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd1d01f3">1. Intro</a></li>
-<li><a href="#org0812f43">2. What data we working with?</a>
+<li><a href="#orgc77095e">1. Intro</a></li>
+<li><a href="#orgbd1be34">2. What data we working with?</a>
 <ul>
-<li><a href="#org7eff27f">2.1. Films with one review</a></li>
-<li><a href="#org5ed58bc">2.2. Films with multiple reviews</a></li>
+<li><a href="#orgea363d4">2.1. Films with one review</a></li>
+<li><a href="#org42dbb2c">2.2. Films with multiple reviews</a></li>
 </ul>
 </li>
-<li><a href="#orga449d31">3. How we processing this?</a>
+<li><a href="#orgd795a4b">3. How we processing this?</a>
 <ul>
-<li><a href="#org60cd9fe">3.1. Filtering &amp; Sorting</a></li>
-<li><a href="#orgc46f6c9">3.2. Mapping</a></li>
+<li><a href="#org3d407e7">3.1. Filtering &amp; Sorting</a></li>
+<li><a href="#orgb6a4092">3.2. Mapping</a></li>
 </ul>
 </li>
-<li><a href="#org0a7efd7">4. Issues &amp; Next Steps</a>
+<li><a href="#orgd5a9bfd">4. Issues &amp; Next Steps</a>
 <ul>
-<li><a href="#org8802da2">4.1. Film Posters</a></li>
-<li><a href="#orgc8bbaba">4.2. Spoiler Sections</a></li>
+<li><a href="#org97a26e8">4.1. Film Posters</a></li>
+<li><a href="#org0a649b3">4.2. Spoiler Sections</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd1d01f3" class="outline-2">
-<h2 id="orgd1d01f3"><span class="section-number-2">1.</span> <a href="#orgd1d01f3">Intro</a></h2>
+<div id="outline-container-orgc77095e" class="outline-2">
+<h2 id="orgc77095e"><span class="section-number-2">1.</span> <a href="#orgc77095e">Intro</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I watch a lot of films.  A <i>lot</i> of films (or movies - the word is interchangeable here).  Last year I watched exactly 252 movies.  That's roughly 1 movie every 0.69 days.  Nice.
@@ -67,15 +67,15 @@ By the end, I ended up with <a href="2024-movies.html">Every Film I Watched in 2
 </p>
 </div>
 </div>
-<div id="outline-container-org0812f43" class="outline-2">
-<h2 id="org0812f43"><span class="section-number-2">2.</span> <a href="#org0812f43">What data we working with?</a></h2>
+<div id="outline-container-orgbd1be34" class="outline-2">
+<h2 id="orgbd1be34"><span class="section-number-2">2.</span> <a href="#orgbd1be34">What data we working with?</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 With every film I watch, I create an <code>org-roam</code> node with a heading to layout the review.
 </p>
 </div>
-<div id="outline-container-org7eff27f" class="outline-3">
-<h3 id="org7eff27f"><span class="section-number-3">2.1.</span> <a href="#org7eff27f">Films with one review</a></h3>
+<div id="outline-container-orgea363d4" class="outline-3">
+<h3 id="orgea363d4"><span class="section-number-3">2.1.</span> <a href="#orgea363d4">Films with one review</a></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 This looks something like this:
@@ -114,8 +114,8 @@ The important areas here are the filetags, review body, and the DATE property of
 </p>
 </div>
 </div>
-<div id="outline-container-org5ed58bc" class="outline-3">
-<h3 id="org5ed58bc"><span class="section-number-3">2.2.</span> <a href="#org5ed58bc">Films with multiple reviews</a></h3>
+<div id="outline-container-org42dbb2c" class="outline-3">
+<h3 id="org42dbb2c"><span class="section-number-3">2.2.</span> <a href="#org42dbb2c">Films with multiple reviews</a></h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Handling films with multiple reviews is a little more hacky.  Instead of a "Review" headline, I instead have a "Reviews" headline, making sure to include the year in the 2nd level heading.
@@ -155,8 +155,8 @@ Very important to note here that I currently don't have a solution for multiple 
 </div>
 </div>
 </div>
-<div id="outline-container-orga449d31" class="outline-2">
-<h2 id="orga449d31"><span class="section-number-2">3.</span> <a href="#orga449d31">How we processing this?</a></h2>
+<div id="outline-container-orgd795a4b" class="outline-2">
+<h2 id="orgd795a4b"><span class="section-number-2">3.</span> <a href="#orgd795a4b">How we processing this?</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 We have two distinct steps to this:
@@ -170,35 +170,35 @@ We have two distinct steps to this:
 As both of these tasks take a non-inconsequential amount of time to compute, I'd like to cache the results of the first step to waste less time, as the filtered list changes much less frequently.  Because of this, I'm running both steps as <code>org-babel</code> blocks.
 </p>
 </div>
-<div id="outline-container-org60cd9fe" class="outline-3">
-<h3 id="org60cd9fe"><span class="section-number-3">3.1.</span> <a href="#org60cd9fe">Filtering &amp; Sorting</a></h3>
+<div id="outline-container-org3d407e7" class="outline-3">
+<h3 id="org3d407e7"><span class="section-number-3">3.1.</span> <a href="#org3d407e7">Filtering &amp; Sorting</a></h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-org">#+NAME: movie-date-map
 #+begin_src elisp :results table :colnames '(TITLE "REVIEW DATE") :cache yes
   (let* ((nodes (org-roam-ql-nodes '(tags "movie" "review")))
          (film-date-map (mapcar (lambda (x)
-                              (list (format "[[id:%s][%s]]"
-                                            (org-roam-node-id x)
-                                            (org-roam-node-title x))
+                                (list (format "[[id:%s][%s]]"
+                                              (org-roam-node-id x)
+                                              (org-roam-node-title x))
                                         (with-temp-buffer (insert-file-contents (cdr (assoc "FILE" (org-roam-node-properties x))) nil)
                                                           (cond ((search-forward "\* Reviews" nil t)
-                                                             (search-forward "2024"))
-                                                            ((search-forward "\* Review" nil t))
-                                                            (t (message "No event timestamp on current line.")))
-                                                      (org-mode)
-                                                      (org-entry-get nil "DATE"))))
-                            nodes))
+                                                               (search-forward "2024"))
+                                                              ((search-forward "\* Review" nil t))
+                                                              (t (message "No event timestamp on current line.")))
+                                                        (org-mode)
+                                                        (org-entry-get nil "DATE"))))
+                              nodes))
          (filtered-map (seq-filter (lambda (x)
-                                 (let ((date (nth 1 x)))
-                                   (if date
-                                       (string-match-p "2024-" date)
-                                     nil)))
-                               film-date-map))
+                                   (let ((date (nth 1 x)))
+                                     (if date
+                                         (string-match-p "2024-" date)
+                                       nil)))
+                                 film-date-map))
          (sorted-map (seq-sort (lambda (a b)
                                  (&lt; (org-time-string-to-seconds (nth 1 a))
-                                (org-time-string-to-seconds (nth 1 b))))
-                           filtered-map)))
+                                  (org-time-string-to-seconds (nth 1 b))))
+                             filtered-map)))
     sorted-map)
 #+end_src
 
@@ -215,8 +215,8 @@ etc...
 </div>
 </div>
 </div>
-<div id="outline-container-orgc46f6c9" class="outline-3">
-<h3 id="orgc46f6c9"><span class="section-number-3">3.2.</span> <a href="#orgc46f6c9">Mapping</a></h3>
+<div id="outline-container-orgb6a4092" class="outline-3">
+<h3 id="orgb6a4092"><span class="section-number-3">3.2.</span> <a href="#orgb6a4092">Mapping</a></h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-org">#+begin_src elisp :results silent :var movie-date-map=movie-date-map
@@ -224,13 +224,13 @@ etc...
     (with-temp-buffer
       (insert-file-contents path nil)
       (let ((film-title (org-get-title))
-        (bt (buffer-string)))
+          (bt (buffer-string)))
         ;; go to review body
         (cond ((string-match "\* Reviews" bt)
-           (progn (search-forward "\* Reviews")
+             (progn (search-forward "\* Reviews")
                       (search-forward "2024")))
-          ((string-match "\* Review" bt)
-           (search-forward "\* Review"))
+            ((string-match "\* Review" bt)
+             (search-forward "\* Review"))
               (t (message "No event timestamp on current line.")))
         (search-forward "\:END\:")
         (delete-region (point-min) (point)) ; delete everything pre-review
@@ -259,12 +259,12 @@ etc...
 
   (defun get-ids-from-map (map)
     (mapcar (lambda (i) (car i))
-        map))
+          map))
 
   (defun get-review-text-from-id (id)
     (let ((path (with-temp-buffer
-              (org-link-open-from-string id)
-              (buffer-file-name))))
+                (org-link-open-from-string id)
+                (buffer-file-name))))
       (get-review-text-from-filepath path)))
 
   (let ((wc (current-window-configuration))
@@ -282,8 +282,8 @@ etc...
   ,#+TOC: headlines 1
   ")
       (-&gt;&gt; (get-ids-from-map movie-date-map)
-       (mapcar 'get-review-text-from-id)
-       (mapcar 'insert)))
+         (mapcar 'get-review-text-from-id)
+         (mapcar 'insert)))
     (set-window-configuration wc)
     (find-file-other-window doc-path))
 #+end_src
@@ -304,12 +304,12 @@ From this, I have the <code>org</code> file I can throw into my <a href="bloggin
 </div>
 </div>
 </div>
-<div id="outline-container-org0a7efd7" class="outline-2">
-<h2 id="org0a7efd7"><span class="section-number-2">4.</span> <a href="#org0a7efd7">Issues &amp; Next Steps</a></h2>
+<div id="outline-container-orgd5a9bfd" class="outline-2">
+<h2 id="orgd5a9bfd"><span class="section-number-2">4.</span> <a href="#orgd5a9bfd">Issues &amp; Next Steps</a></h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org8802da2" class="outline-3">
-<h3 id="org8802da2"><span class="section-number-3">4.1.</span> <a href="#org8802da2">Film Posters</a></h3>
+<div id="outline-container-org97a26e8" class="outline-3">
+<h3 id="org97a26e8"><span class="section-number-3">4.1.</span> <a href="#org97a26e8">Film Posters</a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Currently there are no film posters included alongside the titles, leading to an overly text-heavy output.  While I always include film posters in my <a href="https://mastodon.gamedev.place/@MenacingMecha">Mastodon</a> posts, I left it too late in the year before I realised I didn't have a good workflow for including these.
@@ -320,8 +320,8 @@ While there's not much I can do for 2024's doc (at least not without an unreason
 </p>
 </div>
 </div>
-<div id="outline-container-orgc8bbaba" class="outline-3">
-<h3 id="orgc8bbaba"><span class="section-number-3">4.2.</span> <a href="#orgc8bbaba">Spoiler Sections</a></h3>
+<div id="outline-container-org0a649b3" class="outline-3">
+<h3 id="org0a649b3"><span class="section-number-3">4.2.</span> <a href="#org0a649b3">Spoiler Sections</a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Additionally, while fairly rare, I do sometimes get into major spoilers for a particular film.  It would be nice if I could display these as an opt-in blocks.  IIRC there's easy HTML-only ways to achieve this, so it shouldn't be too tricky.
@@ -333,8 +333,9 @@ Additionally, while fairly rare, I do sometimes get into major spoilers for a pa
 <div id="postamble" class="status">
 <hr/>
 <footer>
+  <p>This Blog doesn't feature comments, but <a href="mailto:menacingmecha@proton.me">send me an email</a> and if it's interesting I'll add an addendum!</p>
   <div class="generated">
-    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)
+    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.11)
  </div>
 </footer>
 </div>

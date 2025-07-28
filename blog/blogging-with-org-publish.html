@@ -32,7 +32,6 @@
 </ul>
 </div>
 </div>
-
 <div id="outline-container-Intro" class="outline-2">
 <h2 id="Intro"><span class="section-number-2">1.</span> <a href="#Intro">Intro</a></h2>
 <div class="outline-text-2" id="text-Intro">
@@ -41,7 +40,6 @@ After scripting the export of <a href="2024-movies.html">Every Film I Watched in
 </p>
 </div>
 </div>
-
 <div id="outline-container-Getting pages generated" class="outline-2">
 <h2 id="Getting pages generated"><span class="section-number-2">2.</span> <a href="#Getting pages generated">Getting pages generated</a></h2>
 <div class="outline-text-2" id="text-Getting pages generated">
@@ -58,7 +56,6 @@ This was more than enough to generate pages with the kind of sitemap index I was
 </p>
 </div>
 </div>
-
 <div id="outline-container-Generating RSS" class="outline-2">
 <h2 id="Generating RSS"><span class="section-number-2">3.</span> <a href="#Generating RSS">Generating RSS</a></h2>
 <div class="outline-text-2" id="text-Generating RSS">
@@ -89,26 +86,26 @@ First, I'd need to extract the data I'd need for each RSS item when iterating ov
 &lt;div id=\"updated\"&gt;Updated: %C&lt;/div&gt;"))
       (print plist))
     (let* ((pwd (file-name-directory (or load-file-name (buffer-file-name))))
-         (output-file (org-html-publish-to-html plist filename pub-dir))
-         (link (string-trim-left output-file pub-dir)))
+           (output-file (org-html-publish-to-html plist filename pub-dir))
+           (link (string-trim-left output-file pub-dir)))
       (when (not is-processing-index)
-      (let ((buffer (find-file filename)))
-        (with-current-buffer buffer
+        (let ((buffer (find-file filename)))
+          (with-current-buffer buffer
             (let* ((kwds (org-collect-keywords '("TITLE" "DATE" "DESCRIPTION")))
-                 (title (cadr (assoc "TITLE" kwds)))
-                 (timestamp-org (cadr (assoc "DATE" kwds)))
-                 (desc (cadr (assoc "DESCRIPTION" kwds))))
+                   (title (cadr (assoc "TITLE" kwds)))
+                   (timestamp-org (cadr (assoc "DATE" kwds)))
+                   (desc (cadr (assoc "DESCRIPTION" kwds))))
               (cond ((null timestamp-org)
-                   (user-error (format "Article '%s' missing DATE property." title)))
-                  ((null desc)
-                   (user-error (format "Article '%s' missing DESC property." title))))
-            (push (list (list "title" title)
-                        (list "date" (org-time-string-to-time timestamp-org))
-                        (list "link" link)
-                        (list "desc" desc))
-                  rss-entry-data)))
-        ;; for whatever reason, pub-dir ends up changed if I don't kill this buffer
-        (kill-buffer buffer))))))
+                     (user-error (format "Article '%s' missing DATE property." title)))
+                    ((null desc)
+                     (user-error (format "Article '%s' missing DESC property." title))))
+              (push (list (list "title" title)
+                          (list "date" (org-time-string-to-time timestamp-org))
+                          (list "link" link)
+                          (list "desc" desc))
+                    rss-entry-data)))
+          ;; for whatever reason, pub-dir ends up changed if I don't kill this buffer
+          (kill-buffer buffer))))))
 </pre>
 </div>
 
@@ -118,19 +115,19 @@ Next, after org-publish has finished building pages, I use that data to generate
 <div class="org-src-container">
 <pre class="src src-elisp">(defun my/rss-data-&gt;rss-string (data)
   (let ((title (cadr (assoc "title" data)))
-      (link (concat target-url (cadr (assoc "link" data))))
-      (desc (cadr (assoc "desc" data)))
-      (date (my/time-to-rfc822-string (cadr (assoc "date" data)))))
+        (link (concat target-url (cadr (assoc "link" data))))
+        (desc (cadr (assoc "desc" data)))
+        (date (my/time-to-rfc822-string (cadr (assoc "date" data)))))
     (format "&lt;item&gt;
 &lt;title&gt;%s&lt;/title&gt;
 &lt;link&gt;%s&lt;/link&gt;
 &lt;description&gt;%s&lt;/description&gt;
 &lt;pubDate&gt;%s&lt;/pubDate&gt;
 &lt;/item&gt;"
-          title
+            title
             link
             desc
-          date)))
+            date)))
 
 (defun my/time-to-rfc822-string (time)
   (format-time-string "%a, %d %b %Y %T %Z" time))
@@ -150,9 +147,9 @@ Next, after org-publish has finished building pages, I use that data to generate
 %s
   &lt;/channel&gt;
 &lt;/rss&gt;"
-                target-url
-                target-url
-                (mapconcat 'my/rss-data-&gt;rss-string (reverse rss-entry-data)))))
+                  target-url
+                  target-url
+                  (mapconcat 'my/rss-data-&gt;rss-string (reverse rss-entry-data)))))
 </pre>
 </div>
 
@@ -161,7 +158,6 @@ From here, we have a fully formed <a href="http:menacingmecha.uk/blog/rss.xml">R
 </p>
 </div>
 </div>
-
 <div id="outline-container-Closing Thoughts" class="outline-2">
 <h2 id="Closing Thoughts"><span class="section-number-2">4.</span> <a href="#Closing Thoughts">Next Steps &amp; Closing Thoughts</a></h2>
 <div class="outline-text-2" id="text-Closing Thoughts">
@@ -178,8 +174,9 @@ If you're interested, the source for these blog pages and the accompanying build
 <div id="postamble" class="status">
 <hr/>
 <footer>
+  <p>This Blog doesn't feature comments, but <a href="mailto:menacingmecha@proton.me">send me an email</a> and if it's interesting I'll add an addendum!</p>
   <div class="generated">
-    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)
+    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.11)
  </div>
 </footer>
 </div>

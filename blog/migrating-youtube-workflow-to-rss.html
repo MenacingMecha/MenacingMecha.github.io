@@ -25,23 +25,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org30d70bf">1. Intro</a></li>
-<li><a href="#org6670621">2. <code>ytdl-sub</code> &amp; Issues</a></li>
-<li><a href="#org17f2386">3. Enter RSS</a></li>
-<li><a href="#orgeee040b">4. Getting an OPML of my YouTube subscriptions</a>
+<li><a href="#org823e13e">1. Intro</a></li>
+<li><a href="#org8470f01">2. <code>ytdl-sub</code> &amp; Issues</a></li>
+<li><a href="#orge71816e">3. Enter RSS</a></li>
+<li><a href="#orga7b1749">4. Getting an OPML of my YouTube subscriptions</a>
 <ul>
-<li><a href="#org52daddd">4.1. Attempt 1</a></li>
-<li><a href="#orgbc99e4c">4.2. Attempt 2</a></li>
+<li><a href="#org12c6dc2">4.1. Attempt 1</a></li>
+<li><a href="#org6dca38c">4.2. Attempt 2</a></li>
 </ul>
 </li>
-<li><a href="#orga9028ff">5. Importing OPML into <code>elfeed-org</code></a></li>
-<li><a href="#org2a38a95">6. <code>elfeed</code> review 'n' queue workflow</a></li>
-<li><a href="#org6a96fb7">7. Future steps</a></li>
+<li><a href="#orgd27a722">5. Importing OPML into <code>elfeed-org</code></a></li>
+<li><a href="#org714bac2">6. <code>elfeed</code> review 'n' queue workflow</a></li>
+<li><a href="#org7ad4a18">7. Future steps</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org30d70bf" class="outline-2">
-<h2 id="org30d70bf"><span class="section-number-2">1.</span> <a href="#org30d70bf">Intro</a></h2>
+<div id="outline-container-org823e13e" class="outline-2">
+<h2 id="org823e13e"><span class="section-number-2">1.</span> <a href="#org823e13e">Intro</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 YouTube - the platform - sucks to use no matter where you're using it.  Outside of the browser, without ad blockers, you're spammed with so many ads it becomes a challenge to actually use.  When you can actually use an ad blocker, there's often issues with videos getting stuck, or occasional weird performance issues on the website itself (this might be an Nvidia on Linux thing, it's always an Nvidia on Linux thing).
@@ -52,8 +52,8 @@ However, I still very much want to watch YouTube - the videos.  People have sugg
 </p>
 </div>
 </div>
-<div id="outline-container-org6670621" class="outline-2">
-<h2 id="org6670621"><span class="section-number-2">2.</span> <a href="#org6670621"><code>ytdl-sub</code> &amp; Issues</a></h2>
+<div id="outline-container-org8470f01" class="outline-2">
+<h2 id="org8470f01"><span class="section-number-2">2.</span> <a href="#org8470f01"><code>ytdl-sub</code> &amp; Issues</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 For a while, I happily used <a href="https://github.com/jmbannon/ytdl-sub">ytdl-sub</a> in a Docker container, running on my home server.  This worked great for a time, downloading all my subscriptions alongside writing the metadata for <a href="https://jellyfin.org/">Jellyfin</a> to group them by channel, and write the video descriptions, etc.
@@ -76,8 +76,8 @@ And I'm not sure if this is an issue with <code>ytdl-sub</code>, or if my Docker
 </p>
 </div>
 </div>
-<div id="outline-container-org17f2386" class="outline-2">
-<h2 id="org17f2386"><span class="section-number-2">3.</span> <a href="#org17f2386">Enter RSS</a></h2>
+<div id="outline-container-orge71816e" class="outline-2">
+<h2 id="orge71816e"><span class="section-number-2">3.</span> <a href="#orge71816e">Enter RSS</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 I have actually tried to use RSS for YouTube before, but it never stuck, precisely because of the aforementioned (rough) 50/50 split of watching on browser vs watching on Android box.  It is a hard requirement for me to be able to watch a chunk of a long video on one, and then resume that video on the other.  If you don't have that requirement, it's a lot easier, but there's still a lot of info here that you might benefit from.
@@ -88,8 +88,8 @@ Another issue I thought I might as well solve while I was at it, was that it's r
 </p>
 </div>
 </div>
-<div id="outline-container-orgeee040b" class="outline-2">
-<h2 id="orgeee040b"><span class="section-number-2">4.</span> <a href="#orgeee040b">Getting an OPML of my YouTube subscriptions</a></h2>
+<div id="outline-container-orga7b1749" class="outline-2">
+<h2 id="orga7b1749"><span class="section-number-2">4.</span> <a href="#orga7b1749">Getting an OPML of my YouTube subscriptions</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Getting an individual RSS feed from a YouTube channel was as simple for me as installing a browser addon to sniff out feeds form a given page (<a href="https://github.com/aureliendavid/rsspreview">https://github.com/aureliendavid/rsspreview</a>), and then navigating to a channel (occasionally having to refresh the page a couple times).
@@ -107,8 +107,8 @@ Enter OPML.
 Both methods involve navigating to <a href="https://www.youtube.com/feed/channels">https://www.youtube.com/feed/channels</a>, scrolling down the bottom to make sure everything has loaded, then pasting a script into the browser dev console.
 </p>
 </div>
-<div id="outline-container-org52daddd" class="outline-3">
-<h3 id="org52daddd"><span class="section-number-3">4.1.</span> <a href="#org52daddd">Attempt 1</a></h3>
+<div id="outline-container-org12c6dc2" class="outline-3">
+<h3 id="org12c6dc2"><span class="section-number-3">4.1.</span> <a href="#org12c6dc2">Attempt 1</a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 First, I tried the method described in <a href="https://dhariri.com/blog/youtube-sub-download/">https://dhariri.com/blog/youtube-sub-download/</a>.
@@ -119,8 +119,8 @@ This worked - and worked fast - but didn't have the feeds titled, which lead to 
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc99e4c" class="outline-3">
-<h3 id="orgbc99e4c"><span class="section-number-3">4.2.</span> <a href="#orgbc99e4c">Attempt 2</a></h3>
+<div id="outline-container-org6dca38c" class="outline-3">
+<h3 id="org6dca38c"><span class="section-number-3">4.2.</span> <a href="#org6dca38c">Attempt 2</a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Next, I tried the method described in <a href="https://github.com/jeb5/YouTube-Subscriptions-RSS">https://github.com/jeb5/YouTube-Subscriptions-RSS</a>.
@@ -132,8 +132,8 @@ This ran SLOW, with a cute little progress dialog on screen.  This filled me wit
 </div>
 </div>
 </div>
-<div id="outline-container-orga9028ff" class="outline-2">
-<h2 id="orga9028ff"><span class="section-number-2">5.</span> <a href="#orga9028ff">Importing OPML into <code>elfeed-org</code></a></h2>
+<div id="outline-container-orgd27a722" class="outline-2">
+<h2 id="orgd27a722"><span class="section-number-2">5.</span> <a href="#orgd27a722">Importing OPML into <code>elfeed-org</code></a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 From here, I was able to run <code>elfeed-org-import-opml</code> on the generated OPML file, and add that to my feed tree.
@@ -144,8 +144,8 @@ A little bit of manual tagging later, I was done!
 </p>
 </div>
 </div>
-<div id="outline-container-org2a38a95" class="outline-2">
-<h2 id="org2a38a95"><span class="section-number-2">6.</span> <a href="#org2a38a95"><code>elfeed</code> review 'n' queue workflow</a></h2>
+<div id="outline-container-org714bac2" class="outline-2">
+<h2 id="org714bac2"><span class="section-number-2">6.</span> <a href="#org714bac2"><code>elfeed</code> review 'n' queue workflow</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Now, with all of my YouTube subscriptions in <code>elfeed</code>, the only step left was to set up my ideal "review 'n' queue" workflow.
@@ -156,11 +156,11 @@ This ended up being extremely simple.  With a small <code>elisp</code> function 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">my/elfeed-queue-yt-dl</span> ()
-  <span style="font-style: italic;">"Add yt-dlp of link of item at point to task queue."</span>
-  (<span style="font-weight: bold;">interactive</span>)
-  (shell-command (concat <span style="font-style: italic;">"ts yt-dlp -P ~/server/raid/archive/media/vid/yt "</span>
-                       (shell-quote-argument (elfeed-entry-link (elfeed-search-selected t)))))
+<pre class="src src-elisp">(defun my/elfeed-queue-yt-dl ()
+  "Add yt-dlp of link of item at point to task queue."
+  (interactive)
+  (shell-command (concat "ts yt-dlp -P ~/server/raid/archive/media/vid/yt "
+                         (shell-quote-argument (elfeed-entry-link (elfeed-search-selected t)))))
   (elfeed-search-untag-all-unread))
 </pre>
 </div>
@@ -170,8 +170,8 @@ The important part here is <code>ts</code>, as this adds the command to a <a hre
 </p>
 </div>
 </div>
-<div id="outline-container-org6a96fb7" class="outline-2">
-<h2 id="org6a96fb7"><span class="section-number-2">7.</span> <a href="#org6a96fb7">Future steps</a></h2>
+<div id="outline-container-org7ad4a18" class="outline-2">
+<h2 id="org7ad4a18"><span class="section-number-2">7.</span> <a href="#org7ad4a18">Future steps</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 For now, I'm happy with this new workflow.  I do have the following ideas of things to improve, however:
@@ -187,8 +187,9 @@ For now, I'm happy with this new workflow.  I do have the following ideas of thi
 <div id="postamble" class="status">
 <hr/>
 <footer>
+  <p>This Blog doesn't feature comments, but <a href="mailto:menacingmecha@proton.me">send me an email</a> and if it's interesting I'll add an addendum!</p>
   <div class="generated">
-    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)
+    Created with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.11)
  </div>
 </footer>
 </div>
